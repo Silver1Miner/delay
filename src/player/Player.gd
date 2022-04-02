@@ -61,8 +61,6 @@ func player_death() -> void:
 func set_en(new_en: float) -> void:
 	if new_en > en:
 		print("gain energy")
-	if new_en < en:
-		print("lose energy")
 	en = clamp(new_en, 0.0, max_en)
 	emit_signal("en_changed", en, max_en)
 	if en <= 0.0:

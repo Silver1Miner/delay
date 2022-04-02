@@ -10,6 +10,10 @@ onready var manager = get_parent()
 var target_position := Vector2.ZERO
 var direction := Vector2.ZERO
 var path := PoolVector2Array() setget set_path
+var invulnerable = false
+
+export (PackedScene) var Explosion = preload("res://src/effects/Explosion.tscn")
+export (PackedScene) var FCT = preload("res://src/effects/FCT.tscn")
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -69,3 +73,13 @@ func die() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	queue_free()
+
+func take_damage(damage_value: float) -> void:
+	if invulnerable:
+		return
+	var fct = FCT.instance()
+	if manager and manager.get_parent():
+		manager.get_parent().add_child(fct)
+	fct.rect_position = get_global_position() + Vector2(0, -16)
+	fct.show_value(str(round(damage_value)), Vector2(0,-8), 1, PI/2)
+	set_hp(hp - damage_value)

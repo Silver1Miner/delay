@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/gui/GUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/world/World.gd" type="Script" id=3]
 [ext_resource path="res://src/enemy/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/world/BackgroundScroll.tscn" type="PackedScene" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( -60, -60, 420, -60, 420, 690, -60, 690 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -60, -60, 420, -60, 420, 690, -60, 690 ) ]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 1 )
+
+[node name="BackgroundScroll" parent="Navigation2D" instance=ExtResource( 5 )]
 
 [node name="Drops" type="Node2D" parent="Navigation2D"]
 
@@ -38,28 +49,28 @@ position = Vector2( 60, -30 )
 position = Vector2( 300, -30 )
 
 [node name="Point6" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 420, 60 )
+position = Vector2( 390, 60 )
 
 [node name="Point7" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -60, 60 )
+position = Vector2( -30, 60 )
 
 [node name="Point8" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -60, 150 )
+position = Vector2( -30, 150 )
 
 [node name="Point9" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 420, 150 )
+position = Vector2( 390, 150 )
 
 [node name="Point10" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 420, 270 )
+position = Vector2( 390, 270 )
 
 [node name="Point11" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -60, 270 )
+position = Vector2( -30, 270 )
 
 [node name="Point12" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -60, 420 )
+position = Vector2( -30, 420 )
 
 [node name="Point13" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 420, 420 )
+position = Vector2( 390, 420 )
 
 [node name="Point14" type="Position2D" parent="Navigation2D/SpawnPoints"]
 position = Vector2( 300, 660 )
