@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/gui/DowngradeChoice.gd" type="Script" id=2]
+
+[node name="Choice1" type="Button"]
+margin_right = 40.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 240, 100 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Info" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -105.0
+margin_right = 105.0
+
+[node name="Header" type="HBoxContainer" parent="Info"]
+margin_right = 210.0
+margin_bottom = 30.0
+custom_constants/separation = 0
+
+[node name="Icon" type="TextureRect" parent="Info/Header"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="Title" type="Label" parent="Info/Header"]
+margin_left = 30.0
+margin_right = 180.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 30 )
+text = "FORWARD GUNS"
+valign = 1
+
+[node name="Level" type="Label" parent="Info/Header"]
+margin_left = 180.0
+margin_right = 210.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+text = "11"
+align = 1
+valign = 1
+
+[node name="Description" type="Label" parent="Info"]
+margin_top = 34.0
+margin_right = 210.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 190, 50 )
+text = "Forward Gun turrets"

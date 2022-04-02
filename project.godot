@@ -11,7 +11,19 @@ config_version=4
 [application]
 
 config/name="Delay"
+config/description="Delay the inevitable loss of your closest companion"
+run/main_scene="res://src/menu/MainMenu.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
+
+[autoload]
+
+PlayerData="*res://src/data/PlayerData.tscn"
+
+[display]
+
+window/size/width=360
+window/size/height=640
 
 [physics]
 

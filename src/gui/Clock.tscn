@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/gui/Clock.gd" type="Script" id=1]
+
+[node name="Clock" type="Label"]
+margin_left = 214.0
+margin_right = 334.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 120, 30 )
+text = "00:00 "
+align = 2
+valign = 1
+script = ExtResource( 1 )
