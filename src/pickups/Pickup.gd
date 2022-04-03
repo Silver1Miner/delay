@@ -18,5 +18,9 @@ func _on_Pickup_area_entered(area: Area2D) -> void:
 		var fct = FCT.instance()
 		get_parent().add_child(fct)
 		fct.rect_position = get_global_position() + Vector2(0,-16)
-		fct.show_value("+10 ENERGY", Vector2(0,-8), 1, PI/2, false)
+		match pickup_type:
+			0:
+				fct.show_value("+10 ENERGY", Vector2(0,-8), 1, PI/2, false)
+			1:
+				fct.show_value("DATA ACQUIRED", Vector2(0,-8), 1, PI/2, false)
 		queue_free()

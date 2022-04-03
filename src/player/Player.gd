@@ -11,8 +11,11 @@ signal hp_changed(hp, max_hp)
 signal en_changed(en, max_en)
 signal level_changed()
 signal player_died()
+export (PackedScene) var Explosion = preload("res://src/effects/Explosion.tscn")
 
 func _ready() -> void:
+	if PlayerData.connect("player_downgraded", self, "_on_player_downgraded") != OK:
+		push_error("player downgrade signal connect failed")
 	add_to_group("player")
 	PlayerData.fresh_restart()
 	emit_signal("hp_changed", hp, max_hp)
@@ -49,7 +52,11 @@ func set_hp(new_hp: float) -> void:
 	if new_hp > hp:
 		print("heal")
 	if new_hp < hp:
-		print("hurt")
+		var explosion_instance = Explosion.instance()
+		get_parent().add_child(explosion_instance)
+		explosion_instance.mute()
+		explosion_instance.position = get_global_position()
+		explosion_instance.scale = Vector2(1,1)
 	hp = clamp(new_hp, 0.0, max_hp)
 	emit_signal("hp_changed", hp, max_hp)
 	if hp <= 0.0:
@@ -75,11 +82,22 @@ func _on_Player_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("enemy"):
 		set_hp(hp - area.get_parent().attack)
 
+var drain = [5, 10, 20, 40]
 func _on_Timer_timeout() -> void:
-	set_en(en - 2)
+	set_en(en - drain[PlayerData.player_downgrades[4]])
 
 # PICKUPS
 func pickup_effect(pickup_type) -> void:
 	match pickup_type:
 		0:
 			set_en(en + 10)
+		1:
+			if PlayerData.lore_collected < PlayerData.max_lore:
+				PlayerData.lore_collected += 1
+
+# DOWNGRADE
+func _on_player_downgraded() -> void:
+	$GunTurret.update_level()
+	$GunTurret2.update_level()
+	$GunTurret3.update_level()
+	$GunTurret4.update_level()

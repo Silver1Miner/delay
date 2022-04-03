@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-export var max_hp := 10.0
-export var hp := 10.0 setget set_hp
-export var speed := 40
+export var max_hp := 50.0
+export var hp := 50.0 setget set_hp
+export var speed := 50
 export var attack := 10
 var velocity := Vector2.ZERO
 var moving := true
@@ -15,6 +15,7 @@ var invulnerable = false
 export (PackedScene) var Explosion = preload("res://src/effects/Explosion.tscn")
 export (PackedScene) var FCT = preload("res://src/effects/FCT.tscn")
 export (PackedScene) var Pickup = preload("res://src/pickups/Pickup.tscn")
+export (PackedScene) var PickupData = preload("res://src/pickups/PickupData.tscn")
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -30,6 +31,10 @@ func _process(delta: float) -> void:
 		if move_accumulated > cooldown:
 			find_target()
 			move_accumulated = 0
+	for a in $Hitbox.get_overlapping_areas():
+		if a.is_in_group("player"):
+			a.set_hp(a.hp - attack * delta)
+
 
 func find_target() -> void:
 	if manager and manager.get_parent() and manager.get_parent().has_node("Player"):
@@ -91,8 +96,12 @@ func take_damage(damage_value: float) -> void:
 func drop() -> void:
 	if manager and manager.get_parent():
 		randomize()
-		var drop_choice = rand_range(0, 20)
-		if drop_choice > 10:
+		var drop_choice = rand_range(0, 25)
+		if drop_choice > 0 and PlayerData.lore_collected < PlayerData.max_lore:
+			var pickup_instance = PickupData.instance()
+			manager.get_parent().get_node("Drops").call_deferred("add_child",pickup_instance)
+			pickup_instance.position = get_global_position()
+		elif drop_choice > 20:
 			var pickup_instance = Pickup.instance()
 			manager.get_parent().get_node("Drops").call_deferred("add_child",pickup_instance)
 			pickup_instance.position = get_global_position()

@@ -26,6 +26,7 @@ custom_constants/separation = 0
 margin_right = 30.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
+stretch_mode = 4
 
 [node name="Title" type="Label" parent="Info/Header"]
 margin_left = 30.0
@@ -50,3 +51,4 @@ margin_right = 210.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 190, 50 )
 text = "Forward Gun turrets"
+autowrap = true

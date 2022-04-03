@@ -8,11 +8,12 @@ func _ready() -> void:
 		quit_button.visible = false
 
 func _on_Start_pressed() -> void:
+	PlayerData.fresh_restart()
 	if get_tree().change_scene_to(PlayerData.world) != OK:
 		push_error("fail to change scene")
 
 func _on_Records_pressed() -> void:
-	print("records pressed")
+	$RecordsMenu.activate()
 
 func _on_Settings_pressed() -> void:
 	$SettingsMenu.visible = true

@@ -28,7 +28,7 @@ func _ready() -> void:
 func update_level() -> void:
 	var new_level = PlayerData.player_downgrades[gun_id]
 	if visible and new_level != current_level:
-		print("upgrade ", Database.downgrades[gun_id]["name"], " to level ", new_level)
+		print("downgrade ", Database.downgrades[gun_id]["name"], " to level ", new_level)
 		current_level = new_level
 		visible = current_level < Database.downgrades[gun_id]["max_level"]
 		if current_level < len(Database.downgrades[gun_id]["damage"]):

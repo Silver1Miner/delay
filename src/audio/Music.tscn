@@ -3,5 +3,6 @@
 [ext_resource path="res://src/audio/Music.gd" type="Script" id=1]
 
 [node name="Music" type="AudioStreamPlayer"]
+pause_mode = 2
 bus = "Music"
 script = ExtResource( 1 )

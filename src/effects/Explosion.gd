@@ -6,3 +6,6 @@ func _ready() -> void:
 
 func _on_AudioStreamPlayer2D_finished() -> void:
 	queue_free()
+
+func mute() -> void:
+	$AudioStreamPlayer2D.volume_db = -100

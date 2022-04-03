@@ -46,9 +46,16 @@ shape = SubResource( 1 )
 
 [node name="GunTurret" parent="." instance=ExtResource( 3 )]
 position = Vector2( 16, 8 )
+gun_id = 1
+
+[node name="CollisionShape2D" parent="GunTurret/AttackRange" index="0"]
+position = Vector2( 104, 0 )
 
 [node name="GunTurret2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -16, 8 )
+
+[node name="CollisionShape2D" parent="GunTurret2/AttackRange" index="0"]
+position = Vector2( -104, -2 )
 
 [node name="GunTurret3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 10 )
@@ -56,8 +63,19 @@ gun_id = 2
 Bullet = ExtResource( 7 )
 shot_sound = ExtResource( 5 )
 
+[node name="CollisionShape2D" parent="GunTurret3/AttackRange" index="0"]
+position = Vector2( 0, 6 )
+
+[node name="Sprite" parent="GunTurret3" index="3"]
+self_modulate = Color( 1, 0.498039, 0.498039, 1 )
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="GunTurret4"]
+[editable path="GunTurret"]
+[editable path="GunTurret2"]
+[editable path="GunTurret3"]

@@ -3,7 +3,7 @@ extends Node2D
 export var speed := 50
 export var lifetime := 1.0
 export var damage := 10.0
-export var explosion_scale := 2.0
+export var explosion_scale := 0.5
 export var explode_on_timeout = false
 export var explode_on_hit = true
 export var has_explosion_effect = true

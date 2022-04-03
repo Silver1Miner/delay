@@ -17,10 +17,10 @@ var downgrades := {
 		"Degrade 6: Disable Left Gun",
 	],
 	"icon": preload("res://assets/world/turret.png"),
-	"damage": [20, 10, 10, 5, 5],
+	"damage": [8, 4, 4, 2, 2],
 	"cooldown": [0.1, 0.1, 0.2, 0.2, 0.5],
 	"speed": [200, 200, 200, 160, 160],
-	"lifetime": [1.0, 1.0, 1.0, 1.0, 1.0]
+	"lifetime": [5.0, 5.0, 5.0, 5.0, 5.0]
 	},
 	1: {"name": "Right Gun", "max_level": 6,
 	"descriptions": [
@@ -32,10 +32,10 @@ var downgrades := {
 		"Degrade 6: Disable Right Gun",
 	],
 	"icon": preload("res://assets/world/turret.png"),
-	"damage": [20, 10, 10, 5, 5],
+	"damage": [8, 4, 4, 2, 2],
 	"cooldown": [0.1, 0.1, 0.2, 0.2, 0.5],
 	"speed": [200, 200, 200, 160, 160],
-	"lifetime": [1.0, 1.0, 1.0, 1.0, 1.0]
+	"lifetime": [5.0, 5.0, 5.0, 5.0, 5.0]
 	},
 	2: {"name": "Blaze Burn", "max_level": 6,
 	"descriptions": [
@@ -47,7 +47,7 @@ var downgrades := {
 		"Degrade 6: Disable Blaze Burn",
 	],
 	"icon": preload("res://assets/world/turret.png"),
-	"damage": [20, 10, 10, 5, 5],
+	"damage": [8, 4, 4, 2, 2],
 	"cooldown": [0.05, 0.05, 0.1, 0.1, 0.2],
 	"speed": [200, 200, 200, 160, 160],
 	"lifetime": [1.0, 1.0, 1.0, 1.0, 0.5]
@@ -62,10 +62,18 @@ var downgrades := {
 		"Degrade 6: Disable Bolt Beam",
 	],
 	"icon": preload("res://assets/world/turret.png"),
-	"damage": [200, 100, 100, 50, 20],
+	"damage": [50, 25, 25, 12, 12],
 	"cooldown": [1.0, 1.0, 2.0, 2.0, 2.0],
 	"speed": [20, 20, 20, 20, 20],
 	"lifetime": [1.0, 1.0, 1.0, 0.5, 0.5]
+	},
+	4: {"name": "Energy Drain", "max_level": 3,
+	"descriptions": [
+		"Degrade 1: -10% Energy per second",
+		"Degrade 2: -20% Energy per second",
+		"Degrade 3: -40% Energy per second",
+	],
+	"icon": preload("res://assets/world/battery.png"),
 	},
 }
 

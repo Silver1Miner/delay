@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/menu/SettingsMenu.gd" type="Script" id=2]
-[ext_resource path="res://assets/audio/explosion.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/shot.ogg" type="AudioStream" id=3]
 
 [node name="SettingsMenu" type="ColorRect"]
 anchor_right = 1.0

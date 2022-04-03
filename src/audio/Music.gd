@@ -6,5 +6,4 @@ func play_music(music_path: String, start:float = 0) -> void:
 	play(start)
 
 func _ready() -> void:
-	pass
-	# play_music("")
+	play_music("res://assets/audio/survive.ogg")
