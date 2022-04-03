@@ -97,11 +97,11 @@ func drop() -> void:
 	if manager and manager.get_parent():
 		randomize()
 		var drop_choice = rand_range(0, 25)
-		if drop_choice > 0 and PlayerData.lore_collected < PlayerData.max_lore:
+		if drop_choice > 24 and PlayerData.lore_collected < PlayerData.max_lore:
 			var pickup_instance = PickupData.instance()
 			manager.get_parent().get_node("Drops").call_deferred("add_child",pickup_instance)
 			pickup_instance.position = get_global_position()
-		elif drop_choice > 20:
+		elif drop_choice > 22:
 			var pickup_instance = Pickup.instance()
 			manager.get_parent().get_node("Drops").call_deferred("add_child",pickup_instance)
 			pickup_instance.position = get_global_position()

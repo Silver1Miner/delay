@@ -69,9 +69,9 @@ var downgrades := {
 	},
 	4: {"name": "Energy Drain", "max_level": 3,
 	"descriptions": [
-		"Degrade 1: -10% Energy per second",
-		"Degrade 2: -20% Energy per second",
-		"Degrade 3: -40% Energy per second",
+		"Degrade 1: -6% Energy per second",
+		"Degrade 2: -8% Energy per second",
+		"Degrade 3: -10% Energy per second",
 	],
 	"icon": preload("res://assets/world/battery.png"),
 	},

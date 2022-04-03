@@ -82,7 +82,7 @@ func _on_Player_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("enemy"):
 		set_hp(hp - area.get_parent().attack)
 
-var drain = [5, 10, 20, 40]
+var drain = [5, 6, 8, 10]
 func _on_Timer_timeout() -> void:
 	set_en(en - drain[PlayerData.player_downgrades[4]])
 
