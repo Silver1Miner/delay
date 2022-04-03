@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/menu/SettingsMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/explosion.ogg" type="AudioStream" id=3]
+
+[node name="SettingsMenu" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+color = Color( 0, 0, 0, 0.862745 )
+script = ExtResource( 2 )
+
+[node name="VolumeControls" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -260.0
+margin_right = 120.0
+margin_bottom = -136.0
+
+[node name="MusicLabel" type="Label" parent="VolumeControls"]
+margin_right = 240.0
+margin_bottom = 24.0
+text = "MUSIC"
+align = 1
+valign = 2
+
+[node name="MusicVolume" type="HSlider" parent="VolumeControls"]
+margin_top = 28.0
+margin_right = 240.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 240, 0 )
+max_value = 1.0
+step = 0.1
+
+[node name="SoundLabel" type="Label" parent="VolumeControls"]
+margin_top = 64.0
+margin_right = 240.0
+margin_bottom = 88.0
+text = "SOUND"
+align = 1
+valign = 2
+
+[node name="SoundVolume" type="HSlider" parent="VolumeControls"]
+margin_top = 92.0
+margin_right = 240.0
+margin_bottom = 124.0
+max_value = 1.0
+step = 0.1
+
+[node name="Close" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -75.0
+margin_top = -140.0
+margin_right = 75.0
+margin_bottom = -90.0
+rect_min_size = Vector2( 150, 50 )
+text = "CLOSE"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Sound"
+
+[connection signal="value_changed" from="VolumeControls/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
+[connection signal="value_changed" from="VolumeControls/SoundVolume" to="." method="_on_SoundVolume_value_changed"]
+[connection signal="pressed" from="Close" to="." method="_on_Close_pressed"]

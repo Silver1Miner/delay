@@ -13,12 +13,16 @@ config_version=4
 config/name="Delay"
 config/description="Delay the inevitable loss of your closest companion"
 run/main_scene="res://src/menu/MainMenu.tscn"
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.00784314, 0.00784314, 0.00784314, 1 )
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
 PlayerData="*res://src/data/PlayerData.tscn"
+Music="*res://src/audio/Music.tscn"
 
 [display]
 

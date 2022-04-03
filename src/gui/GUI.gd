@@ -19,3 +19,6 @@ func _on_Player_en_changed(new_en, max_en) -> void:
 func _on_Player_level_changed() -> void:
 	level_text.text = "Degradation Level: " + str(PlayerData.current_level)
 	joystick.reset()
+
+func update_clock(delta_time: float) -> void:
+	$Status/Bars/Status/Clock.update_clock(delta_time)

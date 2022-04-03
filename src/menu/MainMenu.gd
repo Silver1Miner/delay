@@ -15,7 +15,7 @@ func _on_Records_pressed() -> void:
 	print("records pressed")
 
 func _on_Settings_pressed() -> void:
-	print("settings pressed")
+	$SettingsMenu.visible = true
 
 func _on_Quit_pressed() -> void:
 	get_tree().quit()

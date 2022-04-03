@@ -14,6 +14,7 @@ var invulnerable = false
 
 export (PackedScene) var Explosion = preload("res://src/effects/Explosion.tscn")
 export (PackedScene) var FCT = preload("res://src/effects/FCT.tscn")
+export (PackedScene) var Pickup = preload("res://src/pickups/Pickup.tscn")
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -72,6 +73,8 @@ func set_hp(new_hp: float) -> void:
 func die() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	drop()
+	create_explosion()
 	queue_free()
 
 func take_damage(damage_value: float) -> void:
@@ -83,3 +86,19 @@ func take_damage(damage_value: float) -> void:
 	fct.rect_position = get_global_position() + Vector2(0, -16)
 	fct.show_value(str(round(damage_value)), Vector2(0,-8), 1, PI/2)
 	set_hp(hp - damage_value)
+
+# EFFECTS
+func drop() -> void:
+	if manager and manager.get_parent():
+		randomize()
+		var drop_choice = rand_range(0, 20)
+		if drop_choice > 10:
+			var pickup_instance = Pickup.instance()
+			manager.get_parent().get_node("Drops").call_deferred("add_child",pickup_instance)
+			pickup_instance.position = get_global_position()
+
+func create_explosion() -> void:
+	if manager and manager.get_parent():
+		var explosion_instance = Explosion.instance()
+		manager.get_parent().add_child(explosion_instance)
+		explosion_instance.position = get_global_position()

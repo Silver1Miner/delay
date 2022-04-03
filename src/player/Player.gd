@@ -13,7 +13,8 @@ signal level_changed()
 signal player_died()
 
 func _ready() -> void:
-	PlayerData.current_level = 1
+	add_to_group("player")
+	PlayerData.fresh_restart()
 	emit_signal("hp_changed", hp, max_hp)
 	emit_signal("en_changed", en, max_en)
 
@@ -75,4 +76,10 @@ func _on_Player_area_entered(area: Area2D) -> void:
 		set_hp(hp - area.get_parent().attack)
 
 func _on_Timer_timeout() -> void:
-	set_en(en - 10)
+	set_en(en - 2)
+
+# PICKUPS
+func pickup_effect(pickup_type) -> void:
+	match pickup_type:
+		0:
+			set_en(en + 10)
